@@ -19,7 +19,23 @@ function counter() {
   otroContador()      // 2
   otroContador()      // 3
    */
+  var oldNumber = 0
+  function increment(newNumber){
+    newNumber = oldNumber + 1
+    oldNumber = newNumber
+    return newNumber
+  }
+
+  return increment
 }
+
+const incrementando = counter()
+incrementando()
+incrementando()
+incrementando()
+incrementando()
+incrementando()
+incrementando()
 
 function cacheFunction(cb) {
   /*
@@ -42,7 +58,6 @@ function cacheFunction(cb) {
 
   */
 }
-
 // Bind
 
 var instructor = {
@@ -67,8 +82,8 @@ function getNombre() {
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que actúen como getNombre pero retornen el nombre del instructor y del alumno, respectivamente.
 */
 
-let getNombreInstructor;
-let getNombreAlumno;
+let getNombreInstructor = getNombre.bind(instructor);
+let getNombreAlumno = getNombre.bind(alumno);
 
 /*
   Ejercicio 4
@@ -80,9 +95,9 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos;
-let textoGuiones;
-let textoUnderscore;
+let textoAsteriscos = crearCadena.bind(undefined, '*', '*');
+let textoGuiones = crearCadena.bind(undefined, '-', '-');
+let textoUnderscore = crearCadena.bind(undefined, '_', '_');
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
